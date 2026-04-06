@@ -1,21 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Inter:wght@400;500;600&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   body {
-    @apply bg-sapdarker text-saplight font-sans antialiased;
+    @apply bg-sapdarker text-saplight font-sans antialiased text-base selection:bg-sapblue/40;
+    font-family: 'Inter', sans-serif;
+  }
+  
+  h1, h2, h3, h4, .font-heading {
+    font-family: 'Outfit', sans-serif;
   }
 }
 
 @layer components {
   .glass-panel {
-    @apply bg-sapdark/80 backdrop-blur-md border border-saplight/10 rounded-xl shadow-lg;
+    @apply bg-sapdark/70 backdrop-blur-xl border border-saplight/5 rounded-2xl 
+           shadow-[0_8px_32px_0_rgba(0,0,0,0.37)] hover:border-saplight/15 transition-all duration-500;
   }
+  
+  .glass-panel-accent {
+    @apply glass-panel border-sapblue/20 bg-sapblue/5;
+  }
+
   .btn-primary {
-    @apply px-4 py-2 bg-sapblue hover:bg-blue-600 text-white rounded-lg transition-all duration-300 font-medium shadow-md hover:shadow-blue-500/25;
+    @apply px-6 py-3 bg-sapblue hover:bg-sapblue/90 text-white rounded-xl 
+           transition-all duration-300 font-semibold shadow-lg hover:shadow-sapblue/40 
+           active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed;
   }
+  
   .btn-secondary {
-    @apply px-4 py-2 bg-transparent border border-saplight/20 hover:border-saplight/50 text-saplight rounded-lg transition-all duration-300 font-medium;
+    @apply px-6 py-3 bg-transparent border border-saplight/20 hover:border-saplight/60 
+           hover:bg-saplight/5 text-saplight rounded-xl transition-all duration-300 
+           font-medium active:scale-95;
   }
+
+  .gradient-text {
+    @apply bg-gradient-to-br from-white via-saplight to-sapblue bg-clip-text text-transparent;
+  }
+
+  .hero-gradient {
+    background: radial-gradient(circle at 50% -20%, rgba(10, 110, 209, 0.15) 0%, transparent 70%);
+  }
+}
+
+/* Custom Utilities */
+.text-balance {
+  text-wrap: balance;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-sapdarker;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-saplight/10 rounded-full hover:bg-saplight/20 transition-colors;
 }
