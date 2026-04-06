@@ -7,19 +7,17 @@ This guide outlines the exact steps to deploy the high-performance 1HubSolutions
 - **PostgreSQL** installed (locally or via Hostinger's managed DB).
 - **PM2** installed globally: `npm install -g pm2`.
 
-## 2. Prepare the Files
-1.  **Build Frontend**: From the root directory, run:
-    ```bash
-    npm run build
-    ```
-2.  **Verify Structure**: Ensure the `frontend/dist` folder exists. This contains your optimized visual experience.
+## 2. Option A: Git Automation (Recommended)
+Hostinger has a built-in Git Integration feature. 
+1.  **Connect to GitHub**: In your Hostinger Panel, go to **Advanced > Git**.
+2.  **Repo URL**: Paste `https://github.com/shams96/1hubsolutions.git`.
+3.  **Automatic Build**: When you click "Deploy", Hostinger will automatically run `npm install`, which triggers our **postinstall** script to build the entire dashboard for you.
 
-## 3. Server Configuration
-1.  **Upload**: Upload the entire `1hubsolutions` folder to your server (excluding `node_modules`).
-2.  **Install Dependencies**:
-    ```bash
-    npm run install:all
-    ```
+## 2. Option B: Manual Upload (FTP/File Manager)
+1.  **Build Locally**: From the root directory, run `npm run build`.
+2.  **Upload**: Upload the entire `1hubsolutions` folder to your server (excluding `node_modules`).
+3.  **Install Dependencies**: Run `npm run install:all` on the server.
+
 3.  **Environment Setup**: Update `backend/.env` with your Hostinger database credentials:
     ```env
     DATABASE_URL=postgres://user:pass@host:port/dbname
